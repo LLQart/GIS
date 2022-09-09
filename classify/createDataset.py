@@ -149,8 +149,9 @@ def createDataSet(rasterPath, shpPath):
         #print(points)
         #获取面积
         #print(pts.GetArea())
-    #print(np.array(trainX).shape, np.array(trainY).shape)
-    #print(trainY)
+    print(np.array(trainX).shape, np.array(trainY).shape)
+    print(trainX[0], trainY[0])
+    print(trainX[5000], trainY[5000])
     return trainX, trainY
 
 
@@ -161,18 +162,16 @@ def trainModel(trainX,trainY):
     treenum = 100
     clf = RandomForestClassifier(n_estimators=treenum)
     clf.fit(trainX, trainY)#训练样本
+    return clf
 
     
 
 
+  
 
-
-
-
+# if __name__=='__main__':
+#     rasterPath=r"D:\vscode\pythonscript\image_deal\image-classified\随机森林分类\Python+Scikit-Learn+RandomForest\data\BOA Reflectance-10m_MTD_MSIL2A.tif"
+#     shpPath=r"D:\vscode\pythonscript\image_deal\image-classified\随机森林分类\Python+Scikit-Learn+RandomForest\data\sample1.shp"
+#     trainX, trainY = createDataSet(rasterPath, shpPath)
+#     trainModel(trainX, trainY)
     
-
-if __name__=='__main__':
-    rasterPath=r"D:\vscode\pythonscript\image_deal\image-classified\随机森林分类\Python+Scikit-Learn+RandomForest\data\BOA Reflectance-10m_MTD_MSIL2A.tif"
-    shpPath=r"D:\vscode\pythonscript\image_deal\image-classified\随机森林分类\Python+Scikit-Learn+RandomForest\data\sample1.shp"
-    trainX, trainY = createDataSet(rasterPath, shpPath)
-    trainModel(trainX, trainY)
